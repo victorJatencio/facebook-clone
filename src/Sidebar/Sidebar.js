@@ -8,14 +8,14 @@ import StorefrontIcon from "@material-ui/icons/Storefront";
 import VideoLibraryIcon from "@material-ui/icons/VideoLibrary";
 import { ExpandMoreOutlined } from "@material-ui/icons";
 import "./Sidebar.css";
+import { useStateValue } from "../StateProvider";
 
 function Sidebar() {
+  const [{ user }, dispatch] = useStateValue();
+
   return (
     <div className="sidebar">
-      <SidebarRow
-        src="https://scontent.fewr1-6.fna.fbcdn.net/v/t31.0-8/12525616_992187174160176_8578738980750367535_o.jpg?_nc_cat=103&_nc_sid=09cbfe&_nc_ohc=WI2YNhjmLEYAX9uIFco&_nc_ht=scontent.fewr1-6.fna&oh=62888d9c2eb65797a242a693391d8620&oe=5F934DBE"
-        title="Victor Atencio"
-      />
+      <SidebarRow src={user.photoURL} title={user.displayName} />
       <SidebarRow
         Icon={LocalHospitalIcon}
         title="COVID-19 Information Center"
